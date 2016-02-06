@@ -15,29 +15,30 @@ app.use((request, response)=>{
   match({routes, location}, (err, redirectLocation, renderProps)=>{
     if(err){
       console.error(err);
-      return response.status(500).end('Internal server error');
+      return response.status(500).send(err.message);
+    }else if(redirectLocation){
+      response.redirect(302, redirectLocation.pathname + redirectLocation.search);
+    }else if(renderProps){
+      const InitialComponent = (
+        <RouterContext {...renderProps}/>
+      );
+      const componentHTML = renderToString(InitialComponent);
+      const HTML = `
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <meta charset="utf-8">
+          <title>Express</title>
+        </head>
+        <body>
+          <div id="app">${componentHTML}</div>
+          <script type="application/javascript" src="http://localhost:8080/js/bundle.js"></script>
+        </body>
+      </html>`;
+      response.status(200).send(HTML);
+    }else{
+      return response.status(404).send('Not found.');
     }
-
-    if(!renderProps) return response.status(404).end('Not found.');
-
-    const InitialComponent = (
-      <RouterContext {...renderProps}/>
-    );
-
-    const componentHTML = renderToString(InitialComponent);
-    const HTML = `
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <meta charset="utf-8">
-        <title>Express</title>
-      </head>
-      <body>
-        <div id="app">${componentHTML}</div>
-        <script type="application/javascript" src="http://localhost:8080/js/bundle.js"></script>
-      </body>
-    </html>`;
-    response.status(200).send(HTML);
   });
 
 })
