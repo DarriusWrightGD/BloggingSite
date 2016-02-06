@@ -1,0 +1,80 @@
+{
+  "name": "blogging-site",
+  "version": "1.0.0",
+  "description": "Just a blogging site",
+  "main": "src/client/entry.js",
+  "scripts": {
+    "clean": "rm -rf lib",
+    "watch-js": "./node_modules/.bin/babel src -d lib --experimental -w",
+    "dev-server": "node lib/server/webpack",
+    "server": "nodemon lib/server/server",
+    "start": "npm run watch-js & npm run dev-server & npm run server",
+    "build": "npm run clean && ./node_modules/.bin/babel src -d lib --experimental",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DarriusWrightGD/BloggingSite.git"
+  },
+  "author": "Darrius Wright",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DarriusWrightGD/BloggingSite/issues"
+  },
+  "homepage": "https://github.com/DarriusWrightGD/BloggingSite#readme",
+  "dependencies": {
+    "babel-core": "^6.4.5",
+    "babel-loader": "^6.2.1",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
+    "babel-preset-stage-1": "^6.3.13",
+    "babel-preset-stage-2": "^6.3.13",
+    "css-loader": "^0.23.1",
+    "express": "^4.13.4",
+    "file-loader": "^0.8.5",
+    "history": "^2.0.0",
+    "less": "^2.5.3",
+    "less-loader": "^2.2.2",
+    "lodash": "^4.0.0",
+    "material-design-icons": "^2.1.3",
+    "material-ui": "^0.14.4",
+    "node-sass": "^3.4.2",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "react-redux": "^4.0.6",
+    "react-router": "^2.0.0-rc5",
+    "react-tap-event-plugin": "^0.2.2",
+    "redux": "^3.0.5",
+    "sass-loader": "^3.1.2",
+    "style-loader": "^0.13.0",
+    "trim": "0.0.1",
+    "webpack": "^1.12.11"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react",
+      "stage-0",
+      "stage-1",
+      "stage-2"
+    ]
+  },
+  "devDependencies": {
+    "babel": "^6.3.26",
+    "babelify": "^7.2.0",
+    "chai": "^3.4.1",
+    "expect": "^1.13.4",
+    "karma": "^0.13.19",
+    "karma-babel-preprocessor": "^6.0.1",
+    "karma-browserify": "^4.4.2",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-mocha": "^0.2.1",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^1.7.0",
+    "mocha": "^2.3.4",
+    "react-addons-test-utils": "^0.14.6",
+    "react-hot-loader": "^1.3.0",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
