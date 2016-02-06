@@ -10,7 +10,7 @@
     "server": "nodemon lib/server/server",
     "start": "npm run watch-js & npm run dev-server & npm run server",
     "build": "npm run clean && ./node_modules/.bin/babel src -d lib --experimental",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules/karma/bin/karma start --single-run --browsers Firefox"
   },
   "repository": {
     "type": "git",
@@ -69,6 +69,7 @@
     "karma-babel-preprocessor": "^6.0.1",
     "karma-browserify": "^4.4.2",
     "karma-chrome-launcher": "^0.2.2",
+    "karma-firefox-launcher": "^0.1.7",
     "karma-mocha": "^0.2.1",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^1.7.0",

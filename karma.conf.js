@@ -36,7 +36,7 @@ module.exports = function(config) {
 
     autoWatch: true,
 
-    browsers: ['Chrome'],
+    browsers: ['Firefox'],
 
     singleRun: false,
 
@@ -84,7 +84,7 @@ module.exports = function(config) {
       'karma-webpack',
       'karma-mocha',
       'karma-sourcemap-loader',
-      'karma-chrome-launcher'
+      'karma-firefox-launcher'
     ],
 
     webpackServer:{
