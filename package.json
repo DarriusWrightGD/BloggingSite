@@ -10,7 +10,7 @@
     "server": "nodemon lib/server/server",
     "start": "npm run watch-js & npm run dev-server & npm run server",
     "build": "npm run clean && ./node_modules/.bin/babel src -d lib --experimental",
-    "test": "node_modules/karma/bin/karma start"
+    "test": "node_modules/karma/bin/karma start --single-run --browsers Firefox"
   },
   "repository": {
     "type": "git",
