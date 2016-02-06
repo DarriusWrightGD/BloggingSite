@@ -6,8 +6,6 @@ import createLocation from 'history/lib/createLocation';
 
 const app = express();
 
-app.set('views', './views');
-
 import routes from '../shared/routes';
 
 app.use((request, response)=>{
