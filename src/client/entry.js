@@ -1,14 +1,17 @@
 import React from 'react';
 import {render} from 'react-dom';
-import {Router, Route, Link, browserHistory} from 'react-router';
 import routes from '../shared/routes';
+import ThemeManager from 'material-ui/lib/styles/theme-manager';
+import darkTheme from 'material-ui/lib/styles/raw-themes/dark-raw-theme';
+import Provider from 'src/shared/components/Provider';
+var injectTapEventPlugin = require("react-tap-event-plugin");
+injectTapEventPlugin();
 
-
-import App from 'src/shared/components/App';
-import Home from 'src/shared/components/Home';
-import About from 'src/shared/components/About';
+require('../shared/style/main.scss');
 
 render(
-  routes,
+  <Provider muiTheme= {ThemeManager.getMuiTheme(darkTheme)}>
+    {routes}
+  </Provider>,
   document.getElementById('app')
 );
