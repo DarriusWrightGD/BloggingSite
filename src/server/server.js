@@ -2,7 +2,6 @@ import express from 'express';
 import React from 'react';
 import {renderToString} from 'react-dom/server';
 import {RouterContext , match} from 'react-router';
-import createLocation from 'history/lib/createLocation';
 
 const app = express();
 
@@ -12,7 +11,6 @@ app.use((request, response)=>{
   const location = request.url;
   match({routes, location}, (err, redirectLocation, renderProps)=>{
     if(err){
-      console.error(err);
       return response.status(500).send(err.message);
     }else if(redirectLocation){
       response.redirect(302, redirectLocation.pathname + redirectLocation.search);
@@ -38,14 +36,8 @@ app.use((request, response)=>{
       return response.status(404).send('Not found.');
     }
   });
+});
 
-})
-
-var server = app.listen(3000, function(){
-  var host = server.address().address;
-  var port = server.address().port;
-
-  console.log(`listening at http://${host}${port}`);
-})
+app.listen(3000);
 
 export default app;

@@ -1,8 +1,7 @@
 import React from 'react';
-import {Link} from 'react-router';
 import {AppBar, LeftNav, MenuItem} from 'material-ui';
 
-export default class App extends React.Component{
+class App extends React.Component{
   constructor(props, context){
     super(props, context);
     this.state = {navOpen:false};
@@ -22,11 +21,11 @@ export default class App extends React.Component{
   };
 
   render(){
-    let menuItemsView = this.menuItems.map((item, index)=>{
-        return <MenuItem key= {index} onTouchTap={()=>{
+    const menuItemsView = this.menuItems.map((item, index)=>{
+        return (<MenuItem key= {index} onTouchTap={()=>{
           this.selectedMenuItem(item.route);
         }
-      }>{item.text}</MenuItem>
+      }>{item.text}</MenuItem>);
     });
     return (<div>
       <AppBar
@@ -36,10 +35,12 @@ export default class App extends React.Component{
         {menuItemsView}
       </LeftNav>
       {this.props.children}
-    </div>)
+    </div>);
   }
-};
+}
 
 App.contextTypes ={
   router: React.PropTypes.object
 };
+
+export default App;

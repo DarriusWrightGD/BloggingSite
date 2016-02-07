@@ -4,13 +4,14 @@
   "description": "Just a blogging site",
   "main": "src/client/entry.js",
   "scripts": {
+    "lint": "node_modules/eslint/bin/eslint.js src/**;exit 0",
     "clean": "rm -rf lib",
     "watch-js": "./node_modules/.bin/babel src -d lib --experimental -w",
     "dev-server": "node lib/server/webpack",
     "server": "nodemon lib/server/server",
     "start": "npm run watch-js & npm run dev-server & npm run server",
     "build": "npm run clean && ./node_modules/.bin/babel src -d lib --experimental",
-    "test": "node_modules/karma/bin/karma start --single-run --browsers Firefox"
+    "test": "npm run lint && node_modules/karma/bin/karma start --single-run --browsers Firefox"
   },
   "repository": {
     "type": "git",
@@ -62,8 +63,11 @@
   },
   "devDependencies": {
     "babel": "^6.3.26",
+    "babel-eslint": "^4.1.8",
     "babelify": "^7.2.0",
     "chai": "^3.4.1",
+    "eslint": "^1.10.3",
+    "eslint-plugin-react": "^3.16.1",
     "expect": "^1.13.4",
     "karma": "^0.13.19",
     "karma-babel-preprocessor": "^6.0.1",
