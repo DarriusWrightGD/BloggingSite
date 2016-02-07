@@ -16,4 +16,4 @@ render(
     {routes}
   </Provider>,
   document.getElementById('app')
-)
+);
