@@ -1,0 +1,24 @@
+{
+  extends: "eslint:recommended",
+  parser: "babel-eslint",
+  ecmaFeatures: {
+    modules: true,
+    jsx: true,
+    classes: true,
+    arrowFunctions: true,
+    destructuring: true,
+    spread: true,
+    objectLiteralShorthandMethods: true
+  },
+  rules: {
+    semi: [2, "always"],
+    quotes: [1, "single"],
+    constructor-super: [2],
+    prefer-const: [1],
+    react/jsx-uses-vars: 1,
+    no-unused-vars:[0]
+  },
+  plugins: [
+    "react"
+  ]
+}

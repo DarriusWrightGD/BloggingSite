@@ -20,7 +20,18 @@ module.exports = {
 
   plugins:[
       new webpack.HotModuleReplacementPlugin(),
-      new webpack.NoErrorsPlugin()
+      new webpack.NoErrorsPlugin(),
+      function () {
+        this.plugin('done', function (stats) {
+            if (stats.compilation.errors && stats.compilation.errors.length) {
+                console.log('Found following error(s):');
+                stats.compilation.errors.forEach(function(theError) {
+                    console.log(theError.error);
+                });
+                process.exit(1);
+            }
+        });
+    }
   ],
 
   resolve: {
@@ -37,7 +48,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         include: path.join(__dirname,'src'),
-        loader: 'react-hot!babel'
+        loader: 'react-hot!babel!eslint'
       },
       {
         test: /\.scss$/,
